@@ -20,8 +20,33 @@ Laravel es un marco de aplicación web con una sintaxis expresiva y elegante. Cr
 
 Laravel es accesible, poderoso y proporciona las herramientas necesarias para aplicaciones grandes y robustas.
 
+markdown
+
 ## Aprendiendo Laravel
 Laravel tiene la documentación más extensa y completa de todos los marcos de aplicación web modernos, lo que facilita comenzar con el marco. Si no te apetece leer, [Laracasts](https://laracasts.com) puede ayudarte. Laracasts contiene más de 1500 tutoriales en video sobre una variedad de temas, incluyendo Laravel, PHP moderno, pruebas unitarias y JavaScript. Mejora tus habilidades explorando nuestra completa biblioteca de videos.
+
+
+
+## Instrucciones de instalación
+
+### Clonar el repositorio
+Para comenzar, clona el repositorio utilizando el siguiente comando:
+bash 
+git clone https://github.com/ziyuco/prueba-tecnica-para-desarrolladores-de-backend.git
+
+
+Usa el código con precaución.
+
+### Navegar al directorio del proyecto
+Una vez clonado el repositorio, navega al directorio recién creado:
+bash 
+cd prueba-tecnica-para-desarrolladores-de-backend
+
+
+Usa el código con precaución.
+
+### Instalar dependencias
+Para instalar las dependencias necesarias para el proyecto, ejecuta el siguiente comando:
 
 ## Requisitos para correr Laravel
 Asegúrate de tener instalados los siguientes componentes:
