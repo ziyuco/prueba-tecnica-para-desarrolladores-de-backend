@@ -41,7 +41,7 @@ Para instalar Composer, sigue estos pasos:
 CREATE DATABASE nombre_de_tu_base_de_datos;
 2. Renombra el archivo  `.env.example`  a  `.env`  y configura la conexión a la base de datos:
 env
-   DB_CONNECTION=mysql
+   - **DB_CONNECTION=mysql**
    DB_HOST=127.0.0.1
    DB_PORT=3306
    DB_DATABASE=nombre_de_tu_base_de_datos
