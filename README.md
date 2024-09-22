@@ -1,3 +1,4 @@
+markdown
 
 # README para API REST CRUD con Laravel y Passport
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
@@ -20,7 +21,6 @@ Laravel es un marco de aplicación web con una sintaxis expresiva y elegante. Cr
 
 Laravel es accesible, poderoso y proporciona las herramientas necesarias para aplicaciones grandes y robustas.
 
-markdown
 
 ## Aprendiendo Laravel
 Laravel tiene la documentación más extensa y completa de todos los marcos de aplicación web modernos, lo que facilita comenzar con el marco. Si no te apetece leer, [Laracasts](https://laracasts.com) puede ayudarte. Laracasts contiene más de 1500 tutoriales en video sobre una variedad de temas, incluyendo Laravel, PHP moderno, pruebas unitarias y JavaScript. Mejora tus habilidades explorando nuestra completa biblioteca de videos.
@@ -35,7 +35,6 @@ bash
 git clone https://github.com/ziyuco/prueba-tecnica-para-desarrolladores-de-backend.git
 
 
-Usa el código con precaución.
 
 ### Navegar al directorio del proyecto
 Una vez clonado el repositorio, navega al directorio recién creado:
@@ -43,7 +42,6 @@ bash
 cd prueba-tecnica-para-desarrolladores-de-backend
 
 
-Usa el código con precaución.
 
 ### Instalar dependencias
 Para instalar las dependencias necesarias para el proyecto, ejecuta el siguiente comando:
