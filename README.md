@@ -1,5 +1,6 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# README para API REST CRUD con Laravel y Passport
 
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
@@ -7,58 +8,148 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## Acerca de Laravel
+Laravel es un marco de aplicación web con una sintaxis expresiva y elegante. Creemos que el desarrollo debe ser una experiencia agradable y creativa para ser verdaderamente satisfactoria. Laravel elimina el dolor del desarrollo al facilitar tareas comunes utilizadas en muchos proyectos web, tales como:
+- [Motor de enrutamiento simple y rápido](https://laravel.com/docs/routing).
+- [Contenedor de inyección de dependencias potente](https://laravel.com/docs/container).
+- Múltiples back-ends para [sesiones](https://laravel.com/docs/session) y [almacenamiento en caché](https://laravel.com/docs/cache).
+- [ORM de base de datos expresivo e intuitivo](https://laravel.com/docs/eloquent).
+- [Migraciones de esquema de base de datos agnósticas](https://laravel.com/docs/migrations).
+- [Procesamiento robusto de trabajos en segundo plano](https://laravel.com/docs/queues).
+- [Difusión de eventos en tiempo real](https://laravel.com/docs/broadcasting).
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Laravel es accesible, poderoso y proporciona las herramientas necesarias para aplicaciones grandes y robustas.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Aprendiendo Laravel
+Laravel tiene la documentación más extensa y completa de todos los marcos de aplicación web modernos, lo que facilita comenzar con el marco. Si no te apetece leer, [Laracasts](https://laracasts.com) puede ayudarte. Laracasts contiene más de 1500 tutoriales en video sobre una variedad de temas, incluyendo Laravel, PHP moderno, pruebas unitarias y JavaScript. Mejora tus habilidades explorando nuestra completa biblioteca de videos.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Requisitos para correr Laravel
+Asegúrate de tener instalados los siguientes componentes:
+- PHP >= 7.3
+- Composer
+- MySQL
 
-## Learning Laravel
+### Instalación de Composer
+Para instalar Composer, sigue estos pasos:
+1. Descarga el instalador desde [getcomposer.org](https://getcomposer.org/download/).
+2. Sigue las instrucciones de instalación para tu sistema operativo.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Instalación y configuración de la base de datos
+1. Crea una base de datos en MySQL:
+   - Abre tu cliente MySQL.
+   - Ejecuta el siguiente comando:
+CREATE DATABASE nombre_de_tu_base_de_datos;
+2. Renombra el archivo  `.env.example`  a  `.env`  y configura la conexión a la base de datos:
+env
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=nombre_de_tu_base_de_datos
+   DB_USERNAME=tu_usuario
+   DB_PASSWORD=tu_contraseña
+3. Ejecuta las migraciones para crear las tablas necesarias:
+php artisan migrate
+## Endpoints de la API
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### a: End-point: Login
+- **Método:** POST
+- **URL:**  `/api/v1/users/login` 
+- **Headers:**
+  - Content-Type: application/json
+- **Body (raw):**
+{
+     "mobile_phone": "prueba",
+     "password": "prueba"
+   }
+- **Respuesta:** 200 OK (Devuelve un token de autenticación)
 
-## Laravel Sponsors
+### b: End-point: GetUsers
+- **Método:** GET
+- **URL:**  `/api/v1/users` 
+- **Headers:**
+  - Content-Type: application/json
+  - Authorization: Bearer {token}
+- **Respuesta:** 200 OK
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### c: End-point: GetUser
+- **Método:** GET
+- **URL:**  `/api/v1/users/{id_user}` 
+- **Headers:**
+  - Content-Type: application/json
+  - Authorization: Bearer {token}
+- **Respuesta:** 200 OK
 
-### Premium Partners
+### d: End-point: CreateUser
+- **Método:** POST
+- **URL:**  `/api/v1/users` 
+- **Headers:**
+  - Content-Type: application/json
+- **Body (raw):**
+{
+     "first_name": "string",
+     "last_name": "string",
+     "date_birth": "2021-09-17",
+     "mobile_phone": "string",
+     "email": "user@example.com",
+     "password": "string",
+     "address": "string"
+   }
+- **Respuesta:** 201 Created (Indica que se ha creado un nuevo recurso)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+### e: End-point: UpdateUser
+- **Método:** PUT
+- **URL:**  `/api/v1/users/{id_user}` 
+- **Headers:**
+  - Content-Type: application/json
+  - Authorization: Bearer {token}
+- **Body (raw):**
+{
+     "first_name": "string",
+     "last_name": "string",
+     "date_birth": "2021-09-17",
+     "mobile_phone": "string",
+     "email": "user@example.com",
+     "password": "string",
+     "address": "string"
+   }
+- **Respuesta:** 200 OK
 
-## Contributing
+### f: End-point: DeleteUser
+- **Método:** DELETE
+- **URL:**  `/api/v1/users/{id_user}` 
+- **Headers:**
+  - Content-Type: application/json
+  - Authorization: Bearer {token}
+- **Respuesta:** 204 No Content (Indica que se ha eliminado el recurso)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Pruebas con Postman
+Para probar los endpoints en Postman, sigue estos pasos:
 
-## Code of Conduct
+1. **Autenticación:**
+   - Crea una nueva solicitud POST a  `/api/v1/users/login` .
+   - En la pestaña "Headers", agrega:
+     - Key:  `Content-Type` , Value:  `application/json` 
+   - En la pestaña "Body", selecciona "raw" y elige "JSON" como tipo, luego ingresa el cuerpo de la solicitud.
+   - Envía la solicitud y obtén el token.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+2. **Uso del token:**
+   - Para las solicitudes que requieren autenticación, ve a la pestaña "Headers" y agrega:
+     - Key:  `Authorization` , Value:  `Bearer {token}`  (reemplaza  `{token}`  con el token obtenido).
 
-## Security Vulnerabilities
+Ahora puedes probar los demás endpoints utilizando el token de autenticación.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Contribuyendo
+Gracias por considerar contribuir al marco de Laravel. La guía de contribuciones se puede encontrar en la [documentación de Laravel](https://laravel.com/docs/contributions).
 
-## License
+## Código de Conducta
+Para garantizar que la comunidad de Laravel sea acogedora para todos, por favor revisa y cumple con el [Código de Conducta](https://laravel.com/docs/contributions#code-of-conduct).
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Vulnerabilidades de Seguridad
+Si descubres una vulnerabilidad de seguridad dentro de Laravel, envía un correo electrónico a Taylor Otwell a través de [taylor@laravel.com](mailto:taylor@laravel.com). Todas las vulnerabilidades de seguridad se abordarán de inmediato.
+
+## Licencia
+El marco de Laravel es software de código abierto con licencia bajo la [licencia MIT](https://opensource.org/licenses/MIT).
+
+---
+
+
