@@ -1,5 +1,5 @@
-# README para API REST CRUD con Laravel y Passport
 
+# README para API REST CRUD con Laravel y Passport
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
@@ -38,34 +38,44 @@ Para instalar Composer, sigue estos pasos:
 1. Crea una base de datos en MySQL:
    - Abre tu cliente MySQL.
    - Ejecuta el siguiente comando:
-CREATE DATABASE nombre_de_tu_base_de_datos;
-2. Renombra el archivo  `.env.example`  a  `.env`  y configura la conexión a la base de datos:
-env
-   - **DB_CONNECTION=mysql**
-   - **DB_HOST=127.0.0.1**
-   - **DB_PORT=3306**
-   - **DB_DATABASE=nombre_de_tu_base_de_datos**
-   - **DB_USERNAME=tu_usuario**
-   - **DB_PASSWORD=tu_contraseña**
+sql
+   CREATE DATABASE nombre_de_tu_base_de_datos;
+2. Renombra el archivo `.env.example` a `.env` y configura la conexión a la base de datos:
+   - **DB_CONNECTION=mysql** 
+   - **DB_HOST=127.0.0.1** 
+   - **DB_PORT=3306** 
+   - **DB_DATABASE=nombre_de_tu_base_de_datos** 
+   - **DB_USERNAME=tu_usuario** 
+   - **DB_PASSWORD=tu_contraseña** 
 3. Ejecuta las migraciones para crear las tablas necesarias:
-php artisan migrate
-## Endpoints de la API
+bash
+   php artisan migrate
+4. **Configuración de Passport:**
+   - **Nota:** Laravel Passport ya está configurado en este proyecto. No es necesario ejecutar `php artisan passport:install` a menos que desees generar nuevas claves de cliente.
 
+## Ejecutar el servidor
+Para ejecutar el servidor de desarrollo, utiliza el siguiente comando:
+bash
+php artisan serve
+Esto iniciará el servidor en `http://localhost:8000` de forma predeterminada.
+
+## Endpoints de la API
 ### a: End-point: Login
 - **Método:** POST
-- **URL:**  `/api/v1/users/login` 
+- **URL:** `/api/v1/users/login` 
 - **Headers:**
   - Content-Type: application/json
 - **Body (raw):**
+json
 {
-     "mobile_phone": "prueba",
-     "password": "prueba"
-   }
+  "mobile_phone": "prueba",
+  "password": "prueba"
+}
 - **Respuesta:** 200 OK (Devuelve un token de autenticación)
 
 ### b: End-point: GetUsers
 - **Método:** GET
-- **URL:**  `/api/v1/users` 
+- **URL:** `/api/v1/users` 
 - **Headers:**
   - Content-Type: application/json
   - Authorization: Bearer {token}
@@ -73,7 +83,7 @@ php artisan migrate
 
 ### c: End-point: GetUser
 - **Método:** GET
-- **URL:**  `/api/v1/users/{id_user}` 
+- **URL:** `/api/v1/users/{id_user}` 
 - **Headers:**
   - Content-Type: application/json
   - Authorization: Bearer {token}
@@ -81,42 +91,44 @@ php artisan migrate
 
 ### d: End-point: CreateUser
 - **Método:** POST
-- **URL:**  `/api/v1/users` 
+- **URL:** `/api/v1/users` 
 - **Headers:**
   - Content-Type: application/json
 - **Body (raw):**
+json
 {
-     "first_name": "string",
-     "last_name": "string",
-     "date_birth": "2021-09-17",
-     "mobile_phone": "string",
-     "email": "user@example.com",
-     "password": "string",
-     "address": "string"
-   }
+  "first_name": "string",
+  "last_name": "string",
+  "date_birth": "2021-09-17",
+  "mobile_phone": "string",
+  "email": "user@example.com",
+  "password": "string",
+  "address": "string"
+}
 - **Respuesta:** 201 Created (Indica que se ha creado un nuevo recurso)
 
 ### e: End-point: UpdateUser
 - **Método:** PUT
-- **URL:**  `/api/v1/users/{id_user}` 
+- **URL:** `/api/v1/users/{id_user}` 
 - **Headers:**
   - Content-Type: application/json
   - Authorization: Bearer {token}
 - **Body (raw):**
+json
 {
-     "first_name": "string",
-     "last_name": "string",
-     "date_birth": "2021-09-17",
-     "mobile_phone": "string",
-     "email": "user@example.com",
-     "password": "string",
-     "address": "string"
-   }
+  "first_name": "string",
+  "last_name": "string",
+  "date_birth": "2021-09-17",
+  "mobile_phone": "string",
+  "email": "user@example.com",
+  "password": "string",
+  "address": "string"
+}
 - **Respuesta:** 200 OK
 
 ### f: End-point: DeleteUser
 - **Método:** DELETE
-- **URL:**  `/api/v1/users/{id_user}` 
+- **URL:** `/api/v1/users/{id_user}` 
 - **Headers:**
   - Content-Type: application/json
   - Authorization: Bearer {token}
@@ -124,17 +136,16 @@ php artisan migrate
 
 ## Pruebas con Postman
 Para probar los endpoints en Postman, sigue estos pasos:
-
 1. **Autenticación:**
-   - Crea una nueva solicitud POST a  `/api/v1/users/login` .
+   - Crea una nueva solicitud POST a `/api/v1/users/login`.
    - En la pestaña "Headers", agrega:
-     - Key:  `Content-Type` , Value:  `application/json` 
+     - Key: `Content-Type`, Value: `application/json`
    - En la pestaña "Body", selecciona "raw" y elige "JSON" como tipo, luego ingresa el cuerpo de la solicitud.
    - Envía la solicitud y obtén el token.
 
 2. **Uso del token:**
    - Para las solicitudes que requieren autenticación, ve a la pestaña "Headers" y agrega:
-     - Key:  `Authorization` , Value:  `Bearer {token}`  (reemplaza  `{token}`  con el token obtenido).
+     - Key: `Authorization`, Value: `Bearer {token}` (reemplaza `{token}` con el token obtenido).
 
 Ahora puedes probar los demás endpoints utilizando el token de autenticación.
 
@@ -151,5 +162,3 @@ Si descubres una vulnerabilidad de seguridad dentro de Laravel, envía un correo
 El marco de Laravel es software de código abierto con licencia bajo la [licencia MIT](https://opensource.org/licenses/MIT).
 
 ---
-
-
