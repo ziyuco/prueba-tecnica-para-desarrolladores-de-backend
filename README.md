@@ -80,6 +80,9 @@ Para ejecutar el servidor de desarrollo, utiliza el siguiente comando:
 bash
 php artisan serve
 Esto iniciará el servidor en `http://localhost:8000` de forma predeterminada.
+## usuario de prueba 
+- **telefono** 123456789
+- **contraseña** Contraseña123
 
 ## Endpoints de la API
 ### a: End-point: Login
